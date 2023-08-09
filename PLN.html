@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>PLN Listrik</title>
+    <style type="text/css" media="all">
+      .header-menu-bg{
+  width: 100%;
+  height: 3rem;
+  border-bottom: 2px solid #f5f5f5;
+}
+.header-menu{
+  width: 50%;
+  text-align: center;
+  float: left;
+  height: 3rem;
+  display: table;
+}
+.header-menu h1{
+  font-size: 0.9rem;
+  display: table-cell;
+  vertical-align: middle;
+  opacity: 0.7;
+  font-weight: bold;
+}
+.section-input{
+  width: 100%;
+  height: auto;
+}
+.section-input form{
+  width: 100%;
+  padding: 5%;
+}
+.section-input label{
+  font-size: 16px;
+  color: #073570;
+  font-weight: bold;
+}
+.section-input input{
+  width: 100%;
+  height: auto;
+  border: none;
+  padding: 3%;
+  font-size: 15px;
+  opacity: 0.8;
+  padding-left: 0;
+  font-weight: bold;
+  outline: none;
+  border-bottom: 1px solid rgb(123,119,119);
+}
+
+.bg-pilih {
+  width: 100%;
+  height: auto;
+}
+.bg-pilih form{
+  width: 100%;
+  padding: 5%;
+}
+.bg-pilih input{
+  border: 1px solid #0261EE;
+  border-radius: 5px;
+  padding-left: 5%;
+  margin-top: 5%;
+  font-weight: bold;
+  background: #F2F5FE;
+  color : #48a5f5;
+}
+.bg-pilih h1{
+  position: absolute;
+  margin-left: 82%;
+  margin-top: -2.8rem;
+  font-size: 2rem;
+  color: #0261EE;
+}
+.Aktiv{
+  color: #0261EE;
+  border-bottom: 1px solid #2196f3;
+  font-weight: bold;
+}
+
+#kontakUser{
+  position: absolute;
+  margin-left: -9%;
+  width: 8%;
+}
+
+#copasUser{
+  position: absolute;
+  margin-left: -10%;
+  margin-top: 0%;
+  width: 12%;
+}
+.alert-warning{
+  width: 90%;
+  margin-left: 5%;
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+.alert-Img{
+  width: 30%;
+  text-align: center;
+  float: left;
+  padding: 5%;
+  height: 100%;
+}
+.alert-Img img{
+  width: 100%;
+  height: 100%;
+  margin-top: -8%;
+}
+.text-alert{
+  width: 80%;
+  height: auto;
+  padding-top: 3%;
+}
+.text-alert h1{
+  font-size: 1rem;
+  color: white;
+  opacity: 2;
+}
+.text-alert p{
+  font-size: 0.7rem;
+  color: white;
+  opacity: 1;
+}
+.btn-click{
+  width: 100%;
+  height: 3rem;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  background-color: #f3f3f3;
+}
+.btn-order{
+  width: 100%;
+  height: 3rem;
+  display: table;
+  color : #48a5f5;
+}
+.btn-order h2{
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #48a5f5;
+}
+.section-data{
+  width: 100%;
+  height: fixed;
+}
+.data-menu{
+  width: 90%;
+  margin-left: 5%;
+  height: 4rem;
+  background-image: linear-gradient(to bottom, #f2f2fe, #f6f5fe, #f9f8fe, #fcfcff, #ffffff);
+  box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 3px;
+  box-shadow: rgb(233,233,233) 0px 1px 1px 1px;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+.dataNama{
+  width: 70%;
+  height: 4rem;
+  float: left;
+  padding: 3%;
+}
+.dataNama h1{
+  font-size: 1rem;
+  color: #073570;
+}
+.dataNama h2{
+  font-size: 0.8rem;
+  color: #48a5f5;
+}
+.datarow{
+  width: 25%;
+  height: 3.5rem;
+  display: table;
+  text-align: right;
+}
+.datarow h1{
+  display: table-cell;
+  color: #0261EE;
+  vertical-align: middle;
+  font-size: 2rem;
+  opacity: 0.7;
+}
+
+#tagihan{
+  display: none;
+}
+    </style>
+   <body>
+     
+  <!-- TOKEN PLN -->
+    <section class="header-menu-bg">
+      <div id="tokenCon" class="header-menu Aktiv" onclick="token()">
+        <h1>TOKEN</h1>
+      </div>
+       <div id="tagihanCon" class="header-menu" onclick="tagihan()">
+        <h1>TAGIHAN PLN</h1>
+      </div>
+    </section>
+<section id="token">
+<section class="section-input">
+  <form action="" method="get" accept-charset="utf-8">
+    <label for="">No.meter/ id pel</label>
+    <input type="number" name="" id="noToken" oninput="cetakToken()" value="" placeholder="Masukkan Nomor Meter"/>
+    <img id="copasUser" src="https://i.ibb.co/jGsL5sh/20220206-234303.png" alt="copas" />
+    
+  </form>
+  <div class="bg-pilih">
+    <form action="" method="get" accept-charset="utf-8">
+      <label for="">Pilih Produk</label>
+      <input data-bs-toggle="offcanvas" data-bs-target="#esakuKategori1" aria-controls="offcanvasRight" type="text" name="" id="cetakHere" value="" placeholder="Pilih Nominal Token" readonly=""/>
+      <h1>›</h1>
+    </form>
+  </div>
+</section>
+
+<section class="alert-warning">
+  <div class="alert-Img">
+    <img src="https://i.ibb.co/ns4BPs7/complain.png" alt="" />
+  </div>
+  <div class="text-alert">
+    <h1>Keterangan :</h1>
+    <p>Transaksi pukul 23.00 - 00.59 akan diproses pada pukul 01.00</p>
+  </div>
+</section>
+
+<section id="btnOrder" class="btn-click">
+  <div onclick="btnOrderToken()" class="btn-order">
+    <h2 id="textBtn">Lanjutkan</h2>
+  </div>
+</section>
+<section id="DATA-SECTION-B" class="body-B-Data esakuid-scroll">
+  <section id="kategori" class="kategori">
+    <div class="offcanvas offcanvas-end" style="scroll-snap-type:y mandatory;overflow-y:scroll;display:flex;" tabindex="-1" id="esakuKategori1" aria-labelledby="offcanvasRightLabel">
+   <!-- HEADER DATA B -->
+  <div class="font-white offcanvas-header mb-10">
+  </div>
+     <!-- BODY DATA B -->
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 20.000' , 'https://felicyacell.bukaolshop.site/produk/token-pln-20-1472928')">
+    <div class="dataNama">
+    <h1>Token Listrik 20.000</h1>
+    <h2>Rp.20.600</h2>
+    <a href="https://jefriyantoasaribu.bukaolshop.site/produk/token-pln-20-1472928"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 50.000' , 'https://felicyacell.bukaolshop.site/produk/token-pln-50-1472929')">
+    <div class="dataNama">
+    <h1>Token Listrik 50.000</h1>
+    <h2>Rp.50.600</h2>
+    <a href="https://felicyacell.bukaolshop.site/produk/token-pln-50-1472929"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 100.000' , 'https://felicyacell.bukaolshop.site/produk/token-pln-100-1472932')">
+    <div class="dataNama">
+    <h1>Token Listrik 100.000</h1>
+    <h2>Rp.100.600</h2>
+    <a href="https://felicyacell.bukaolshop.site/produk/token-pln-100-1472932"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , 'https://jefriyantoasaribu.bukaolshop.site/produk/token-pln-200-1472934')">
+    <div class="dataNama">
+    <h1>Token Listrik 200.000</h1>
+    <h2>Rp.200.600</h2>
+    <a href="https://jefriyantoasaribu.bukaolshop.site/produk/token-pln-200-1472934"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , '#')">
+    <div class="dataNama">
+    <h1>Token Listrik 300.000</h1>
+    <h2>Belum Tersedia</h2>
+    <a href="#"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , '#')">
+    <div class="dataNama">
+    <h1>Token Listrik 400.000</h1>
+    <h2>Belum Tersedia</h2>
+    <a href="#"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div> 
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 500.000' , 'https://jefriyantoasaribu.bukaolshop.site/produk/token-listrik-500-1396302')">
+    <div class="dataNama">
+    <h1>Token Listrik 500.000</h1>
+    <h2>Rp.501.000</h2>
+    <a href="https://jefriyantoasaribu.bukaolshop.site/produk/token-listrik-500-1396302"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , '#')">
+    <div class="dataNama">
+    <h1>Token Listrik 600.000</h1>
+    <h2>Belum Tersedia</h2>
+    <a href="#"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , '#')">
+    <div class="dataNama">
+    <h1>Token Listrik 700.000</h1>
+    <h2>Belum Tersedia</h2>
+    <a href="#"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <div class="data-menu" data-bs-dismiss="offcanvas" aria-label="Close" id="offcanvasRightLabel" onclick="cetakData('Token 200.000' , '#')">
+    <div class="dataNama">
+    <h1>Token Listrik 800.000</h1>
+    <h2>Belum Tersedia</h2>
+    <a href="#"></a>
+    </div>
+    <div class="datarow">
+    <h1>›</h1>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+</div>
+  </section>
+</section>
+</section>
+
+<!-- TAGIHAN PLN -->
+<section id="tagihan">
+  <section class="section-input">
+  <form action="" method="get" accept-charset="utf-8">
+    <label for="">No.Meter/Id.Pel</label>
+    <input type="number" name="" id="noTagihan" oninput="cetakTagihan()" value="" placeholder="Masukkan Nomor Meter" autofocus=""/>
+    <img id="copasUser" src="https://i.ibb.co/jGsL5sh/20220206-234303.png" alt="copas" />
+    
+    <section class="alert-warning">
+  <div class="alert-Img">
+    <img src="https://i.ibb.co/ns4BPs7/complain.png" alt="" />
+  </div>
+  <div class="text-alert">
+    <h1>Keterangan :</h1>
+    <p>Pastikan anda memasukan Nomor Tagihan dengan benar, Maksimal 12 digit</p>
+  </div>
+</section>
+    
+    <!-- URL PRODUK -->
+    <a id="urlTagihan1" href="https://jefriyantoasaribu.bukaolshop.site/produk/tagihan-listrik-1472956"></a>
+  </form>
+  
+</section>
+<section id="btnOrder1" class="btn-click">
+  <div onclick="btnOrderT()" class="btn-order">
+    <h2 id="textBtn1">Cek Tagihan</h2>
+  </div>
+</section>
+</section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script type="text/javascript" charset="utf-8">
+      
+let inputToken = document.getElementById('noToken');
+let inputTagihan = document.getElementById('noTagihan');
+
+let saveInput ="";
+
+inputTagihan.value = saveInput;
+// this pilihan klik tagihan
+function tagihan() {
+ let tagihan = document.getElementById('tagihan');
+ let token = document.getElementById('token');
+ let conToken = document.getElementById('tokenCon');
+ let tagihanCon = document.getElementById('tagihanCon');
+ saveInput = inputToken.value;
+ conToken.style = " color: black;border-bottom: none  ;font-weight: bold;";
+ tagihanCon.style = "color: #0261EE;border-bottom: 1px solid #0261EE;font-weight: bold;"
+ 
+  token.style.display = "none";
+  tagihan.style.display = "block";
+}
+
+// this pilihan token
+function token() {
+  let tagihan = document.getElementById('tagihan');
+ let token = document.getElementById('token');
+ let conToken = document.getElementById('tokenCon');
+ let tagihanCon = document.getElementById('tagihanCon');
+ 
+ conToken.style = " color: #0261EE;border-bottom: 1px solid #0261EE;font-weight: bold;";
+ tagihanCon.style = "color: black;border-bottom: none  ;font-weight: bold;"
+  token.style.display = "block";
+  tagihan.style.display = "none";
+}
+
+let inputCetakHere = document.getElementById('cetakHere');
+let link = "";
+function cetakData(nama, url) {
+  inputCetakHere.value = nama;
+  link = url;
+}
+// cetak token
+function cetakToken() {
+  let inputToken = document.getElementById('noToken').value;
+  let btnOrder = document.getElementById("btnOrder");
+  let inputTagihan = document.getElementById('noTagihan');
+  let textBTN = document.getElementById('textBtn');
+  if (inputToken.length > 9 ) {
+    btnOrder.style = "background-color: #48a5f5;";
+    textBTN.style = "color: white;";
+    inputTagihan.value = inputToken;
+  }else if (inputToken.length < 10) {
+    btnOrder.style = "background-color: #f3f3f3;";
+    textBTN.style = "color: #48a5f5;";
+  }
+}
+
+
+// cetak tagihan
+function cetakTagihan() {
+  let inputToken = document.getElementById('noToken');
+  let btnOrder = document.getElementById("btnOrder1");
+  let inputTagihan = document.getElementById('noTagihan').value;
+  let textBTN = document.getElementById('textBtn1');
+  if (inputTagihan.length > 9 ) {
+    btnOrder.style = "background-color: #48a5f5;";
+    textBTN.style = "color: white;";
+    inputTagihan.value = inputToken;
+  }else if (inputTagihan.length < 10 ) {
+    btnOrder.style = "background-color: #f3f3f3;";
+    textBTN.style = "color: #48a5f5;";
+  }
+}
+
+function btnOrderToken() {
+  let catatan = "?catatan=";
+  let idInput = document.getElementById("noToken").value;
+
+  window.location.href = link+catatan+idInput;
+}
+function btnOrderT() {
+  let catatan = "?catatan=";
+  let idInput1 = document.getElementById("noTagihan").value;
+  let link1 = document.getElementById("urlTagihan1");
+  window.location.href = link1+catatan+idInput1;
+}
+
+    </script>
+  </body>
+</html>
